@@ -1,0 +1,5 @@
+Multiple categories medium
+Add a category picker before the quiz starts — "React", "JavaScript", "CSS". Filter questions by selected category. Store categories in your questions data file.
+4
+Shuffle questions stretch
+Randomize the question order and shuffle the options on each quiz start using the Fisher-Yates shuffle algorithm. Questions should be different every time.

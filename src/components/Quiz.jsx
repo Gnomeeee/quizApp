@@ -11,6 +11,7 @@ export default function Quiz() {
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
   const [timeLeft, setTimeLeft] = useState(TIME_PER_QUESTION);
 
   const current = questions[index];
@@ -20,6 +21,15 @@ export default function Quiz() {
     if (isAnswered || finished) return;
     if (timeLeft === 0) {
       setSelected("__TIMEOUT__");
+      setWrongAnswers((prev) => [
+        ...prev,
+        {
+          question: current.question,
+          yourAnswer: "⏰ Timed out",
+          correctAnswer: current.answer,
+          explanation: current.explanation,
+        },
+      ]);
       return;
     }
 
@@ -37,7 +47,19 @@ export default function Quiz() {
   function handleAnswer(option) {
     if (isAnswered) return;
     setSelected(option);
-    if (option === current.answer) setScore((prev) => prev + 1);
+    if (option === current.answer) {
+      setScore((prev) => prev + 1);
+    } else {
+      setWrongAnswers((prev) => [
+        ...prev,
+        {
+          question: current.question,
+          yourAnswer: option,
+          correctAnswer: current.answer,
+          explanation: current.explanation,
+        },
+      ]);
+    }
   }
 
   function handleNext() {
@@ -57,6 +79,7 @@ export default function Quiz() {
     setScore(0);
     setFinished(false);
     setTimeLeft(TIME_PER_QUESTION);
+    setWrongAnswers([]);
   }
 
   if (finished) {
@@ -65,6 +88,7 @@ export default function Quiz() {
         score={score}
         total={questions.length}
         onRestart={handleRestart}
+        wrongAnswers={wrongAnswers}
       />
     );
   }
