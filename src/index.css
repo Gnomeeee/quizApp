@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+.quiz-card {
+  @apply bg-white rounded-2xl shadow-md p-6 w-full max-w-md;
+}
+
+.quiz-meta {
+  @apply text-xs text-gray-400 mb-3;
+}
+
+.quiz-question {
+  @apply text-sm font-medium text-gray-800 mb-4 leading-relaxed;
+}
+
+.quiz-options {
+  @apply flex flex-col gap-2;
+}
+
+.option-btn.correct {
+  @apply bg-green-50 border-green-300 text-green-700;
+}
+
+.option-btn.wrong {
+  @apply bg-red-50 border-red-400 text-red-600;
+}
+
+.quiz-explanation {
+  @apply text-xs text-gray-500 mt-3 bg-gray-50 rounded-lg p-3 leading-relaxed;
+}
+
+.quiz-next {
+  @apply mt-3 bg-blue-500 text-white text-sm px-5 py-2
+         rounded-xl cursor-pointer hover:bg-blue-600;
+}
+
+.progress-track {
+  @apply h-1.5 bg-gray-100 rounded-full flex-1 mr-3;
+}
+
+.progress-fill {
+  @apply h-full bg-green-500 rounded-full transition-all duration-300;
+}
+
+.results {
+  @apply text-center py-4;
+}
+
+.results-grade {
+  @apply text-2xl mb-2;
+}
+
+.results-score {
+  @apply text-4xl font-medium text-gray-800;
+}
+
+.results-pct {
+  @apply text-sm text-gray-400 mt-1;
+}
+
+.restart-btn {
+  @apply mt-4 bg-green-500 text-white text-sm px-6
+         py-2 rounded-xl cursor-pointer hover:bg-green-600;
+}
+.quiz-header {
+  @apply flex justify-between items-center mb-4;
+}
+
+.timer {
+  @apply text-sm font-medium px-3 py-1 rounded-full transition-colors;
+}
+
+.timer-green {
+  @apply bg-green-50 text-green-600;
+}
+.timer-yellow {
+  @apply bg-yellow-50 text-yellow-600;
+}
+.timer-red {
+  @apply bg-red-50 text-red-500 font-bold;
+}
+
+.timeout-msg {
+  @apply text-xs text-orange-600 bg-orange-50 rounded-lg p-3 mt-3;
+}
