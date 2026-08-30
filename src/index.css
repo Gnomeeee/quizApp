@@ -16,6 +16,10 @@
   @apply flex flex-col gap-2;
 }
 
+.option-btn {
+  @apply bg-gray-50 rounded-lg cursor-pointer py-2 hover:bg-gray-100 transition-colors duration-200;
+}
+
 .option-btn.correct {
   @apply bg-green-50 border-green-300 text-green-700;
 }
@@ -128,4 +132,59 @@
 
 .review-explanation {
   @apply text-xs text-gray-400 mt-2 leading-relaxed;
+}
+.picker-card {
+  @apply bg-white rounded-2xl shadow-md p-6 w-full max-w-md;
+}
+
+.picker-title {
+  @apply text-xl font-medium text-gray-800 mb-1 text-center;
+}
+
+.picker-sub {
+  @apply text-sm text-gray-400 text-center mb-6;
+}
+
+.cat-grid {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.cat-card {
+  @apply flex flex-col items-center gap-1 p-4 rounded-2xl
+         cursor-pointer transition-transform hover:scale-105;
+}
+
+.cat-emoji {
+  @apply text-3xl;
+}
+.cat-name {
+  @apply text-sm font-medium;
+}
+.cat-desc {
+  @apply text-xs text-center opacity-70;
+}
+
+.cat-blue {
+  @apply bg-blue-50 text-blue-700;
+}
+.cat-yellow {
+  @apply bg-yellow-50 text-yellow-700;
+}
+.cat-pink {
+  @apply bg-pink-50 text-pink-700;
+}
+.cat-purple {
+  @apply bg-purple-50 text-purple-700;
+}
+
+.quiz-topbar {
+  @apply flex justify-between items-center mb-3;
+}
+
+.back-btn-sm {
+  @apply text-xs text-gray-400 cursor-pointer hover:text-gray-600;
+}
+
+.quiz-cat-badge {
+  @apply text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-medium;
 }

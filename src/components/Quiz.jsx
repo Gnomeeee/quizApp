@@ -1,12 +1,21 @@
-import { useEffect, useState } from "react";
-import questions from "../data/questions";
+import { useEffect, useState, useMemo } from "react";
+import allQuestions from "../data/questions";
 import ResultScreen from "./ResultsScreen";
 import ProgressBar from "./ProgressBar";
 import OptionButton from "./OptionButton";
+import { prepareQuestions } from "../utils/shuffle";
 
 const TIME_PER_QUESTION = 15;
 
-export default function Quiz() {
+export default function Quiz({ category, onBack }) {
+  const questions = useMemo(() => {
+    const filtered =
+      category === "All"
+        ? allQuestions
+        : allQuestions.filter((q) => q.category === category);
+    return prepareQuestions(filtered);
+  }, [category]);
+
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
@@ -80,6 +89,7 @@ export default function Quiz() {
     setFinished(false);
     setTimeLeft(TIME_PER_QUESTION);
     setWrongAnswers([]);
+    onBack();
   }
 
   if (finished) {
@@ -88,6 +98,7 @@ export default function Quiz() {
         score={score}
         total={questions.length}
         onRestart={handleRestart}
+        onBack={onBack}
         wrongAnswers={wrongAnswers}
       />
     );
@@ -98,6 +109,13 @@ export default function Quiz() {
 
   return (
     <div className="quiz-card">
+      <div className="quiz-topbar">
+        <button className="back-btn-sm" onClick={onBack}>
+          ← Back
+        </button>
+        <span className="quiz-cat-badge">{category}</span>
+      </div>
+
       <div className="quiz-header">
         <ProgressBar current={index + 1} total={questions.length} />
         <div className={`timer ${timerColor}`}>{timeLeft}s</div>

@@ -12,7 +12,7 @@ export default function OptionButton({ option, selected, answer, onSelect }) {
         : "neutral";
 
   return (
-    <button className={`option-btb ${style}`} onClick={() => onSelect(option)}>
+    <button className={`option-btn ${style}`} onClick={() => onSelect(option)}>
       {option}
     </button>
   );
